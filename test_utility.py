@@ -37,5 +37,15 @@ def feature_target_sample(housing_data_sample):
 
 def test_data_split(feature_target_sample):
     return_tuple = data_split(*feature_target_sample)
-    # TODO test if the length of return_tuple is 4
-    raise NotImplemented
+    # Check if the return has 4 items
+    assert len(return_tuple) == 4
+
+    X_train, X_test, y_train, y_test = return_tuple
+
+    # Check the total rows = original
+    assert len(X_train) + len(X_test) == 2
+    assert len(y_train) + len(y_test) == 2
+
+    # Check that lengths match (features vs target)
+    assert len(X_train) == len(y_train)
+    assert len(X_test) == len(y_test)
