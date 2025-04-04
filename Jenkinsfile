@@ -13,14 +13,14 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''#!/bin/bash
-                echo 'Test Step: We run testing tool like pytest here'
+                echo 'Test Step: Running pytest...'
 
-                pip install -r requirements.txt
-                pytest
+                /opt/anaconda3/bin/pip install -r requirements.txt
+                /opt/anaconda3/bin/pytest
                 '''
-
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'In this step, we deploy our porject'
